@@ -8,13 +8,15 @@
     편리하게 학생들의 출결과 반별 진도를 관리해주는 프로그램이다.
     
 
-        
+----------        
 
 
 ## 2. 개발환경
 + windows 11 64bit
 + IDE Pycharm professonial version
 + Python : 3.10
+
+----------
 
 ## 3. 참여자
 + 팀장 이지우
