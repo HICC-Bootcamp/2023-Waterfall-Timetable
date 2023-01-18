@@ -1,9 +1,9 @@
 # app.py
 from flask import Flask # 1
 
-app=Flask(__name__) # 2
+app = Flask(__name__) # 2
 
-@app.route("/", methods=['GET']) # 3
+@app.route("/") # 3
 def hello_world():
 	return "Hello World!"
 
