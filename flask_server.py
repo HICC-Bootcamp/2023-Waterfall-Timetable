@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from flask import Flask, render_template
 import random
 
@@ -18,20 +18,10 @@ def teacher_2():
 @app.route('/studentpage/1/')
 def student():
     return render_template('studentpage_1.html')
+@app.route('/studentpage/2/')
+def student2():
+    return render_template('studentpage_2.html')
 
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
-=======
-# app.py
-from flask import Flask # 1
-
-app = Flask(__name__) # 2
-
-@app.route("/") # 3
-def hello_world():
-	return "hello world"
-
-if __name__ == '__main__': # 4
-    app.run()
->>>>>>> 0a8e88b (뭐지....)
