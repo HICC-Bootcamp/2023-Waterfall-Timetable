@@ -22,6 +22,10 @@ def student():
 def student2():
     return render_template('studentpage_2.html')
 
+@app.route('/manager/')
+def manager():
+    return render_template('manager.html')
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
