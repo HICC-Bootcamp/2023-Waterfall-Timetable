@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def initial():
-    return render_template('Initialpage.html')
+    return render_template('initial page_1.html')
 
 @app.route('/Teacherpage/1/')
 def teacher():
@@ -14,7 +14,9 @@ def teacher():
 @app.route('/3/')
 def teacher_2():
     return render_template('Teacherpage_2.html')
-
+@app.route('/studentpage/1/')
+def student():
+    return render_template('studentpage_1.html')
 
 if __name__ == '__main__':
     app.debug = True
