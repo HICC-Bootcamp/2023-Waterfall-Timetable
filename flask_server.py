@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, render_template
 import random
 
@@ -19,3 +20,16 @@ def teacher_2():
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
+=======
+# app.py
+from flask import Flask # 1
+
+app = Flask(__name__) # 2
+
+@app.route("/") # 3
+def hello_world():
+	return "hello world"
+
+if __name__ == '__main__': # 4
+    app.run()
+>>>>>>> 0a8e88b (뭐지....)
