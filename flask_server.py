@@ -12,9 +12,12 @@ def initial():
 def teacher():
     return render_template('Teacherpage_1.html')
 
-@app.route('/3/')
+@app.route('/Teacherpage/2/')
 def teacher_2():
     return render_template('Teacherpage_2.html')
+@app.route('/Teacherpage/4/')
+def teacher_4():
+    return render_template('Teacherpage_manageClass.html')
 @app.route('/studentpage/1/')
 def student():
     return render_template('studentpage_1.html')
