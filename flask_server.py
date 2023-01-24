@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 import random
-from forms import RegistrationForm
+
 
 app = Flask(__name__)
 
