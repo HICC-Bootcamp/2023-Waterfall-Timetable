@@ -74,13 +74,23 @@ if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
 
-#####엑셀파일 생성
-import openpyxl
-wb = openpyxl.Workbook()
 
-wb.active.title = "시간표 생성1"
-wb.create_sheet("시간표 생성2")
 
-new_filename = 'C:/Users/user/Desktop/올빼미/excel saver/excel.xlsx'
 
-wb.save(new_filename)
+
+####엑셀 파일 생성
+from openpyxl import Workbook
+wb = Workbook()
+ws = wb.active
+ws_new = wb.create_sheet()
+ws.title = "class1"
+ws_new.title = "class2"
+
+wb.save("timetable.xlsx")
+
+from openpyxl import load_workbook
+
+wb = load_workbook("timetable.xlsx")
+
+ws = wb["class1"]
+
