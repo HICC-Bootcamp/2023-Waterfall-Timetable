@@ -12,89 +12,91 @@
  <br>
  <div style="text-align:right"><button onclick="window.location.href='/'">HOME</button></div>
  <br>
+ <form action="/manager_result/" method="post">
  <h3>
     <div style="text-align:center">총 학급수:
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1개</option>
-        <option value="class_2">2개</option>
-        <option value="class_3">3개</option>
-        <option value="class_4">4개</option>
-        <option value="class_5">5개</option>
-        <option value="class_6">6개</option>
-        <option value="class_7">7개</option>
-        <option value="class_8">8개</option>
+    <select name="class_number" style="width:60px;height:30px;">
+        <option value="1" selected>1개</option>
+        <option value="2">2개</option>
+        <option value="3">3개</option>
+        <option value="4">4개</option>
+        <option value="5">5개</option>
+        <option value="6">6개</option>
+        <option value="7">7개</option>
+        <option value="8">8개</option>
     </select>
     </div>
     <div style="text-align:center">
         <input type="checkbox"> 국어1:
-        <select name="class" style="width:60px;height:30px;">
-            <option value="class_1" selected>1시간</option>
-            <option value="class_2">2시간</option>
-            <option value="class_3">3시간</option>
-            <option value="class_4">4시간</option>
-            <option value="class_5">5시간</option>
+        <select name="korean1_class" style="width:60px;height:30px;">
+            <option value="1" selected>1시간</option>
+            <option value="2">2시간</option>
+            <option value="3">3시간</option>
+            <option value="4">4시간</option>
+            <option value="5">5시간</option>
         </select>
     </div>
     <div style="text-align:center"><input type="checkbox">  국어2:
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="korean2_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
     <div style="text-align:center"><input type="checkbox">  수학1:
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="math1_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
 
     <div style="text-align:center"><input type="checkbox">  수학2:
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="math2_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
     <div style="text-align:center"><input type="checkbox">  영어 :
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="english_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
     <div style="text-align:center"><input type="checkbox">  사회 :
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="social_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
     <div style="text-align:center"><input type="checkbox">  과학 :
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="science_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
     <div style="text-align:center"><input type="checkbox">  체육 :
-    <select name="class" style="width:60px;height:30px;">
-        <option value="class_1" selected>1시간</option>
-        <option value="class_2">2시간</option>
-        <option value="class_3">3시간</option>
-        <option value="class_4">4시간</option>
-        <option value="class_5">5시간</option>
+    <select name="physical_class" style="width:60px;height:30px;">
+        <option value="1" selected>1시간</option>
+        <option value="2">2시간</option>
+        <option value="3">3시간</option>
+        <option value="4">4시간</option>
+        <option value="5">5시간</option>
     </select></div>
  </h3>
 <br>
-<div style="text-align:right"><button>시간표 생성</button></div>
+<div style="text-align:right"><button type="submit">시간표 생성</button></div>
+ </form>
 
 </body>
 </html>

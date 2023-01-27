@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>manager page</title>
+</head>
+<body>
+ <h1><strong><p>
+ <div style="text-align:center">
+	<a href="/">학급관리 프로그램</a></p></strong></h1>
+ </div>
+ <br>
+ <div style="text-align:right"><button onclick="window.location.href='/'">HOME</button></div>
+ <br>
+
+<div class="show_result">
+    <table style="border: 1px solid black; width: 600px; text-align: center;">
+        <thead>
+            <tr>
+                <th>/</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr>
+                <!-- 월화수목금 1교시~8교시 별로 출력 -->
+                <td>{{ loop.index }}</td>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
