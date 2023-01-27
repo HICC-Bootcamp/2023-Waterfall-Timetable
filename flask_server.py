@@ -34,3 +34,13 @@ if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
 
+#####엑셀파일 생성
+import openpyxl
+wb = openpyxl.Workbook()
+
+wb.active.title = "시간표 생성1"
+wb.create_sheet("시간표 생성2")
+
+new_filename = 'C:/Users/user/Desktop/올빼미/excel saver/excel.xlsx'
+
+wb.save(new_filename)
