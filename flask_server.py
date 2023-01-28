@@ -21,12 +21,8 @@ def teacher_2():
     if request.method == "POST":
         subject_select = request.form.get("subject")
 
-
         return render_template('Teacherpage_2.html', subject_select = subject_select)
     return render_template('Teacherpage_2.html')
-
-    return render_template('Teacherpage_2.html')
-
 
 @app.route('/Teacherpage/4/')
 def teacher_4():
