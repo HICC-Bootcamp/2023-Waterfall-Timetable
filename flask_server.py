@@ -16,8 +16,15 @@ def teacher():
     return render_template('Teacherpage_1.html')
 
 
-@app.route('/Teacherpage/2/')
+@app.route('/Teacherpage/2/', methods=["GET", "POST"])
 def teacher_2():
+    if request.method == "POST":
+        subject_select = request.form.get("subject")
+
+
+        return render_template('Teacherpage_2.html', subject_select = subject_select)
+    return render_template('Teacherpage_2.html')
+
     return render_template('Teacherpage_2.html')
 
 
