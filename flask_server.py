@@ -11,7 +11,7 @@ def initial():
     return render_template('initial page_1.html')
 
 
-@app.route('/Teacherpage/1/')
+@app.route('/Teacherpage/1/',)
 def teacher():
     return render_template('Teacherpage_1.html')
 
