@@ -28,8 +28,27 @@ def teacher_2():
     return render_template('Teacherpage_2.html')
 
 
-@app.route('/Teacherpage/4/')
+@app.route('/Teacherpage/3/', methods=["GET", "POST"])
+def teacher_3():
+    return render_template('Teacherpage_3.html')
+
+@app.route('/Teacherpage/4/', methods=["GET", "POST"])
 def teacher_4():
+    if request.method == "POST":
+        class_select = request.form.get("class")
+
+        period = list()
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+
+        return render_template('Teacherpage_manageClass.html', rows=period, class_select=class_select)
+
     return render_template('Teacherpage_manageClass.html')
 
 

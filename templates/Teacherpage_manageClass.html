@@ -15,39 +15,32 @@
 <div style="text-align:center"><h2>담당학급 관리</h2></div>
 <br><br>
 
-<h3><div style="text-align:center">담당학급 시간표</div></p></h3>
-<p><table border="5" style="margin-left: auto; margin-right: auto">
-            <thead>
-    <tr>
-        <td>   </td><th>월  </th><th>화  </th><th>수  </th><th>목  </th><th>금  </th>
-    </tr>
-            </thead>
-    <tbody>
-    <tr>
-        <th>1교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>2교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>3교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>4교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>5교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>6교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>7교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    <tr>
-        <th>8교시</th><td>   </td><td>    </td><td>    </td><td>    </td><td>     </td>
-    </tr>
-    </tbody>
+<h3><div style="text-align:center">{{ class_select}} 시간표</div></p></h3>
+<div class="show_result">
+    <table style="border: 1px solid black; width: 600px; text-align: center;">
+        <thead>
+            <tr>
+                <th>/</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr>
+                <!-- 월화수목금 1교시~8교시 별로 출력 -->
+                <td>{{ loop.index }}</td>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table>
     <br><br>
 
