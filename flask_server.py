@@ -85,7 +85,12 @@ ws = wb.active
 ws_new = wb.create_sheet()
 ws.title = "class1"
 ws_new.title = "class2"
-
+sheet3 = wb.create_sheet('class3')
+sheet4 = wb.create_sheet('class4')
+sheet5 = wb.create_sheet('class5')
+sheet6 = wb.create_sheet('class6')
+sheet7 = wb.create_sheet('class7')
+sheet8 = wb.create_sheet('class8')
 wb.save("timetable.xlsx")
 
 from openpyxl import load_workbook
