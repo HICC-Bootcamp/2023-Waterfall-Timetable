@@ -26,13 +26,27 @@ def teacher_4():
     return render_template('Teacherpage_manageClass.html')
 
 
-@app.route('/studentpage/1/')
+@app.route('/studentpage/1/', methods=["GET", "POST"])
 def student():
     return render_template('studentpage_1.html')
 
 
-@app.route('/studentpage/2/')
+@app.route('/studentpage/2/', methods=["GET", "POST"])
 def student2():
+    if request.method == "POST":
+        class_select = request.form.get("class")
+
+        period = list()
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+        period.append([0, 0, 0, 0, 1])
+
+        return render_template('studentpage_2.html', rows=period, class_select=class_select)
     return render_template('studentpage_2.html')
 
 
@@ -46,6 +60,7 @@ def manager_result():
     if request.method == "POST":
         class_number = request.form.get("class_number")
         # class_number는 직접 시도해보세요ㅎ 테이블을 여러개 만들면됩니다.
+
         korean1 = int(request.form.get("korean1_class"))
         korean2 = int(request.form.get("korean2_class"))
         math1 = int(request.form.get("math1_class"))
