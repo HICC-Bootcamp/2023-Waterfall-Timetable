@@ -82,8 +82,7 @@ def manager():
 @app.route('/manager_result/', methods=["GET", "POST"])
 def manager_result():
     if request.method == "POST":
-        class_number = request.form.get("class_number")
-        # class_number는 직접 시도해보세요ㅎ 테이블을 여러개 만들면됩니다.
+        #classnumber = request.form.get("class_number")
 
         korean1 = int(request.form.get("korean1_class"))
         korean2 = int(request.form.get("korean2_class"))
