@@ -1,7 +1,7 @@
 import pandas as pd
 import openpyxl
 filename = 'C:/Users/user/Desktop/올빼미/excel_saver/manage_attendance.xlsx'
-wb = openpyxl.load_workbook(manage_attendance)
+wb = openpyxl.load_workbook(manage_attendance,xlsx)
 sheet=wb.worksheets[0]
 data = []
 for row in sheet.rows:
