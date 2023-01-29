@@ -118,23 +118,11 @@ if __name__ == '__main__':
 
 
 ####엑셀 파일 생성
-from openpyxl import Workbook
-wb = Workbook()
-ws = wb.active
-ws_new = wb.create_sheet()
-ws.title = "class1"
-ws_new.title = "class2"
-sheet3 = wb.create_sheet('class3')
-sheet4 = wb.create_sheet('class4')
-sheet5 = wb.create_sheet('class5')
-sheet6 = wb.create_sheet('class6')
-sheet7 = wb.create_sheet('class7')
-sheet8 = wb.create_sheet('class8')
-wb.save("timetable.xlsx")
 
-from openpyxl import load_workbook
 
-wb = load_workbook("timetable.xlsx")
 
-ws = wb["class1"]
+
+
+
+
 
