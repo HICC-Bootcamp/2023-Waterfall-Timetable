@@ -1,6 +1,8 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 import random
+import pandas as pd
+import openpyxl
 
 
 app = Flask(__name__)
@@ -109,6 +111,15 @@ def manager_result():
     return render_template('manager_result.html')
 
 
+@app.route('/Teacher/result/')
+def teacherresult():
+    df = pd.read_excel('./templates/manage_attendance.xlsx')
+    for i in range(0,29,1):
+        globals()['student_'+str(i+1)]= df.loc[i,"출결"]
+        print(globals()['student_'+str(i+1)])
+    return render_template('Teacher_result.html')
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
@@ -117,7 +128,6 @@ if __name__ == '__main__':
 
 
 
-####엑셀 파일 생성
 
 
 
