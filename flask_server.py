@@ -82,7 +82,8 @@ def manager():
 @app.route('/manager_result/', methods=["GET", "POST"])
 def manager_result():
     if request.method == "POST":
-        #classnumber = request.form.get("class_number")
+        class_number = request.form.get("class_number")
+        #class_number = int(request.form.get("class_number")) 시간표 반의 개수만큼 보여주는 코드
 
         korean1 = int(request.form.get("korean1_class"))
         korean2 = int(request.form.get("korean2_class"))
@@ -103,7 +104,7 @@ def manager_result():
         period.append([0, 0, 0, 0, science])
         period.append([0, 0, 0, 0, physical])
 
-        return render_template('manager_result.html', rows=period)
+        return render_template('manager_result.html', rows=period)#class_number=class_number
 
     return render_template('manager_result.html')
 
