@@ -1,7 +1,8 @@
 import pandas as pd
 import openpyxl
-filename = 'C:/Users/user/Desktop/올빼미/excel_saver/manage_attendance.xlsx'
-wb = openpyxl.load_workbook(manage_attendance,xlsx)
+filename='manage_attendance.xlsx'
+df = pd.read_excel(manage_attendance.xlsx, engine= 'openpyxl')
+
 sheet=wb.worksheets[0]
 data = []
 for row in sheet.rows:
