@@ -114,10 +114,12 @@ def manager_result():
 @app.route('/Teacher/result/')
 def teacherresult():
     df = pd.read_excel('./templates/manage_attendance.xlsx')
-    for i in range(0,29,1):
+    data = []
+    for i in range(30):
         globals()['student_'+str(i+1)]= df.loc[i,"출결"]
         print(globals()['student_'+str(i+1)])
-    return render_template('Teacher_result.html')
+        data.append(globals()['student_'+str(i+1)])
+    return render_template('Teacher_result.html',data = data)
 
 
 if __name__ == '__main__':

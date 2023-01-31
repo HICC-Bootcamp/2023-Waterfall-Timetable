@@ -7,15 +7,40 @@
 <body>
 <div style="text-align:center"> 출석:Y 결석:N 지각:L
     <br><br>
-    번호  &nbsp; 출결
+    번호 &nbsp; 출결
     <br>
     <script>
-         for( var i=1; i<31 ;i++){
-          document.write("<label for='"+i +"student'>");
-          document.write(i + '&nbsp; &nbsp; &nbsp;');
-          document.write("</lable>");
-          document.write("<input type='text' id='"+i + "student' name='"+i +"attend' value='Y' size='2'>");
-          document.write("<br>");}
+        function validate(e) {
+
+            console.log('validate');
+            if (e.value != 'Y' && e.value != 'N' && e.value != 'L') {
+                e.value = '';
+            }
+
+        }
+
+        for (var i = 1; i < 31; i++) {
+            document.write("<label for='" + i + "student'>");
+            document.write(i + '&nbsp; &nbsp; &nbsp;');
+            document.write("</lable>");
+            document.write("<input type='text' name='attend' size='2' maxlength='1'/>");
+
+            document.write("<br>");
+            //$(document).on("keyup", "input[attendOnly]", function () {
+            //    $(this).val($(this).val().replace(/[^YNL]/gi, ""));
+            //});
+            let attend = document.getElementsByName('attend')[i-1];
+            attend.setAttribute('value','X');
+            attend.addEventListener('input',function(e){
+                if (attend.value != 'Y' && attend.value != 'N' && attend.value != 'L') {
+                    console.log(attend.value+' validate'+{{data}}[i-1]);
+                    attend.value = '';
+                }
+            });
+
+        }
+
+
     </script>
     <br><br>
     <input type="button" value="저장" onclick="teacherresult()">
