@@ -30,10 +30,13 @@
             //    $(this).val($(this).val().replace(/[^YNL]/gi, ""));
             //});
             let attend = document.getElementsByName('attend')[i-1];
-            attend.setAttribute('value','X');
+            let data = {{data|tojson}}[i-1];
+            console.log(data);
+            attend.setAttribute('value',data);
+            //attend.value[i-1] = {{date}}[i-1];
             attend.addEventListener('input',function(e){
                 if (attend.value != 'Y' && attend.value != 'N' && attend.value != 'L') {
-                    console.log(attend.value+' validate'+{{data}}[i-1]);
+                    console.log(attend.value+' validate');
                     attend.value = '';
                 }
             });

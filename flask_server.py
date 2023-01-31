@@ -1,9 +1,7 @@
-
 from flask import Flask, render_template, request, redirect, url_for
 import random
 import pandas as pd
 import openpyxl
-
 
 app = Flask(__name__)
 
@@ -13,7 +11,7 @@ def initial():
     return render_template('initialpage_1.html')
 
 
-@app.route('/Teacherpage/1/',)
+@app.route('/Teacherpage/1/', )
 def teacher():
     return render_template('Teacherpage_1.html')
 
@@ -23,7 +21,7 @@ def teacher_2():
     if request.method == "POST":
         subject_select = request.form.get("subject")
 
-        return render_template('Teacherpage_2.html', subject_select = subject_select)
+        return render_template('Teacherpage_2.html', subject_select=subject_select)
     return render_template('Teacherpage_2.html')
 
 
@@ -85,7 +83,7 @@ def manager():
 def manager_result():
     if request.method == "POST":
         class_number = request.form.get("class_number")
-        #class_number = int(request.form.get("class_number")) 시간표 반의 개수만큼 보여주는 코드
+        # class_number = int(request.form.get("class_number")) 시간표 반의 개수만큼 보여주는 코드
 
         korean1 = int(request.form.get("korean1_class"))
         korean2 = int(request.form.get("korean2_class"))
@@ -106,7 +104,7 @@ def manager_result():
         period.append([0, 0, 0, 0, science])
         period.append([0, 0, 0, 0, physical])
 
-        return render_template('manager_result.html', rows=period)#class_number=class_number
+        return render_template('manager_result.html', rows=period)  # class_number=class_number
 
     return render_template('manager_result.html')
 
@@ -116,27 +114,13 @@ def teacherresult():
     df = pd.read_excel('./templates/manage_attendance.xlsx')
     data = []
     for i in range(30):
-        globals()['student_'+str(i+1)]= df.loc[i,"출결"]
-        print(globals()['student_'+str(i+1)])
-        data.append(globals()['student_'+str(i+1)])
-    return render_template('Teacher_result.html',data = data)
+        # globals()["student{}".format(i+1)]= df.loc[i,"출결"]
+        # print(globals()["student{}".format(i+1)])
+        data.append(df.loc[i, "출결"])
+    print(data)
+    return render_template('Teacher_result.html', data=data)
 
 
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
