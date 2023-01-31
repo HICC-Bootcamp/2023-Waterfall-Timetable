@@ -122,6 +122,10 @@ def teacherresult():
     return render_template('Teacher_result.html',data = data)
 
 
+@app.route('Teacher/result/')
+def connecting_teacherresult_to():
+    df = pd.read_excel()
+
 
 
 if __name__ == '__main__':
