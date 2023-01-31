@@ -122,6 +122,8 @@ def teacherresult():
     return render_template('Teacher_result.html',data = data)
 
 
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
