@@ -40,6 +40,8 @@ if Total_times % 5 == 0:
     for i in range(1, ind_num + 1):
         ind.append(i)
     con = []
+
+    # 여기서부터 수정해야 할 부분
     for i in range(int(n)):  # 학급 수 만큼 테이블 생성
         df = pd.DataFrame(con, columns=col, index=ind)
         All_timetable.append(df)
