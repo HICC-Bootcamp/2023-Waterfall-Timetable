@@ -1,7 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
+import pandas as pd
+import numpy as np
 import random
+<<<<<<< HEAD
 import pandas as pd
 import openpyxl
+=======
+import copy
+
+>>>>>>> 2d9f5d5 (목요일 수정)
 
 app = Flask(__name__)
 
@@ -82,12 +89,17 @@ def manager():
 @app.route('/manager_result/', methods=["GET", "POST"])
 def manager_result():
     if request.method == "POST":
+<<<<<<< HEAD
         class_number = request.form.get("class_number")
         # class_number = int(request.form.get("class_number")) 시간표 반의 개수만큼 보여주는 코드
 
+=======
+        class_number = int(request.form.get("class_number"))
+        All_timetable = []
+>>>>>>> 2d9f5d5 (목요일 수정)
         korean1 = int(request.form.get("korean1_class"))
         korean2 = int(request.form.get("korean2_class"))
-        math1 = int(request.form.get("math1_class"))
+        math1 = int (request.form.get("math1_class"))
         math2 = int(request.form.get("math2_class"))
         english = int(request.form.get("english_class"))
         social = int(request.form.get("social_class"))
@@ -104,7 +116,13 @@ def manager_result():
         period.append([0, 0, 0, 0, science])
         period.append([0, 0, 0, 0, physical])
 
+<<<<<<< HEAD
         return render_template('manager_result.html', rows=period)  # class_number=class_number
+=======
+
+
+        return render_template('manager_result.html', rows=period, class_number=class_number)
+>>>>>>> 2d9f5d5 (목요일 수정)
 
     return render_template('manager_result.html')
 
