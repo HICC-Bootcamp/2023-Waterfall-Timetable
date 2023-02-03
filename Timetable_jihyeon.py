@@ -33,6 +33,7 @@ while 1:
     else:
         break
 
+# 데이터프레임에 요일 넣기(5의 배수)
 if Total_times % 5 == 0:
     ind_num = Total_times // 5
     col = ["월", "화", "수", "목", "금"]
@@ -40,6 +41,60 @@ if Total_times % 5 == 0:
     for i in range(1, ind_num + 1):
         ind.append(i)
     con = []
+
+# 일단 5의 배수일 때 아래 코드를 실행
+# (몫의 나머지만큼 데이터프레임을 추가로 넣을 필요 없는 코드)
+
+# respectively_day_subject_array = 각 요일별 과목이 들어갈 2차원 배열형태의 리스트
+# 아래 코드를 통해 [[None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ...(5개) 만들어짐]
+row, column = 5, 5
+respectively_day_subject_array = [[None for j in range(column)] for i in range(row)]
+# 과목을 뿌리기 전 None의 상태
+
+for i in range(int(n)):  # 학급 수 만큼 테이블 생성
+    df = pd.DataFrame(con, columns=col, index=ind)
+    All_timetable.append(df)
+
+for i in range(5):
+    for j in range(5):
+        df[i][j] = respectively_day_subject_array[i][j]
+
+for i in range(col):
+    for j in range(row):
+
+        if (type(df[j][i]) == type(df[j][i])):  # 이 경우 모든 타입이 스트링이거나,
+            if (type(df[j][i] == 'str')):  # 모든 타입이 None(빈칸)이거나의 경우
+                print("과목을 넣지 않고 다시 뽑는 함수 실행")
+            else:
+                print("과목을 집어넣는 함수 실행")
+        elif (type(df[j][i]) != type(df[j][i])):  # 빈칸이 1개 정도는 남아 있는 경우(else로 바꾸기 가능)
+            print("과목을 집어넣는 함수 실행")
+
+
+# 중간 변수 이름 정리
+# n : 학급 수
+# N : 과목 개수
+# subject = [] : 과목을 저장하는 리스트
+# subject_times = [] : 과목별 총 시간을 저장하는 리스트
+# subject_min = [] : 과목별 하루 최소 시간을 저장하는 리스트
+
+
+# 횟수 많은 과목을 구하는 용도의 리스트 만들기 함수(리스트 정렬)
+def Creating_sorted_Lists(subject, subject_times):
+    # 인덱스가 일치하게 내림차순으로 정렬된 두 리스트
+    sorted_subject = []
+    sorted_subject_times = []
+
+    for i in range(len(subject_times)):
+        Max = max(subject_times)
+        Max_order = subject_times.index(Max)
+        sorted_subject.append(subject[Max_order])
+        sorted_subject_times.append(Max)
+        del subject_times[Max_order]
+        del subject[Max_order]
+
+
+def
 
     # 여기서부터 수정해야 할 부분
     for i in range(int(n)):  # 학급 수 만큼 테이블 생성
@@ -74,6 +129,7 @@ if Total_times % 5 == 0:
                     del subject_copy[subject_order]
                     del subject_times_copy[subject_order]
             df[df.columns[j]] = class_subject
+
 
 for x in All_timetable:
     print(x)
