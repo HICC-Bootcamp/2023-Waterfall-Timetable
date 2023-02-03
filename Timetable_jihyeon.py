@@ -12,10 +12,6 @@ import copy
 # 5.   요일 중 빈자리 선택
 # 6.   자리가 빈칸인지 아닌지 확인
 # 7.   전 반이랑 비교해서 5번으로 돌아가기.
-
-def main(void):
-
-
 All_timetable = []
 while 1:
     n = input("학급 수를 입력:")
@@ -46,45 +42,83 @@ while 1:
         continue
     else:
         break
+    
+    
 
-# 데이터프레임에 요일 넣기(5의 배수)
-if Total_times % 5 == 0:
-    ind_num = Total_times // 5
-    col = ["월", "화", "수", "목", "금"]
-    ind = []
-    for i in range(1, ind_num + 1):
-        ind.append(i)
-    con = []
+# def main():
+    
+#5의 배수 판별
+def disFive(int):
+    if Total_times % 5 == 0:
+        #세로줄 수
+        ind_num = Total_times // 5
+        #가로줄
+        col = ["월", "화", "수", "목", "금"]
+        #세로줄
+        ind = []
+        for i in range(1, ind_num + 1):
+            ind.append(i)
+    #내용
+        con = []
+    return ind_num,col,ind,con
 
-# 일단 5의 배수일 때 아래 코드를 실행
-# (몫의 나머지만큼 데이터프레임을 추가로 넣을 필요 없는 코드)
 
-# respectively_day_subject_array = 각 요일별 과목이 들어갈 2차원 배열형태의 리스트
-# 아래 코드를 통해 [[None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ...(5개) 만들어짐]
-row, column = 5, 5
-# row = int(num)
-respectively_day_subject_array = [[None for j in range(column)] for i in range(row)]
-# 과목을 뿌리기 전 None의 상태
+#     # 일단 5의 배수일 때 아래 코드를 실행
+#     # (몫의 나머지만큼 데이터프레임을 추가로 넣을 필요 없는 코드)
+# 
+#     # respectively_day_subject_array = 각 요일별 과목이 들어갈 2차원 배열형태의 리스트
+#     # 아래 코드를 통해 [[None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ...(5개) 만들어짐]
+#     row, column = 5, 5
+#     # row = int(num)
+#     respectively_day_subject_array = [[None for j in range(column)] for i in range(row)]
+#     # 과목을 뿌리기 전 None의 상태
 
-for i in range(int(n)):  # 학급 수 만큼 테이블 생성
-    df = pd.DataFrame(con, columns=col, index=ind)
-    All_timetable.append(df)
+#리스트에 df 추가 (3차원 배열)
+def make_Df(n, con):
+    #남은 요일 인덱스
+    remains_day_index=[0,1,2,3,4]
+    for i in range(int(n)):
+        df = pd.DataFrame(con, columns=col, index=ind)
+        All_timetable.append(df)
+    return(All_timetable,remains_day_index)
+# 
+# for i in range(5):
+#     for j in range(5):
+#         df[i][j] = respectively_day_subject_array[i][j]
 
-for i in range(5):
-    for j in range(5):
-        df[i][j] = respectively_day_subject_array[i][j]
+# 이 경우 모든 타입이 스트링이거나, # 모든 타입이 None(빈칸)이거나의 경우
+            
+# 
+#     for i in range(col):
+#         while True:
+#             for j in range(row):
+#                 if(type(df[0][i]) == type(df[j][i])):
+#                     if (type(df[0][i] == 'str')):
+#                         print("과목을 넣지 않고 다시 뽑는 함수 실행")
+#                     else:
+#                         print("과목을 집어넣는 함수 실행")
+#                 else:
+#                     return False
+#
+# 가득참 확인
+def com_full_with_string(ind_num):
+    i=0
+    while i < len(con):
+        while True:
+            if(type(df[0][i] == 'str')):
+                for j in range(1,ind_num):
+                    if(type(df[0][i]) == type(df[j][i])):
+                        True
+                    else:
+                        i+=1
+                        break
+                del remains_day_index[i]
+                i+=1
+                break
+  
+    return remains_day_index
 
-for i in range(col):
-    for j in range(row):
-
-        if (type(df[j][i]) == type(df[j][i])):  # 이 경우 모든 타입이 스트링이거나,
-            if (type(df[j][i] == 'str')):  # 모든 타입이 None(빈칸)이거나의 경우
-                print("과목을 넣지 않고 다시 뽑는 함수 실행")
-            else:
-                print("과목을 집어넣는 함수 실행")
-        elif (type(df[j][i]) != type(df[j][i])):  # 빈칸이 1개 정도는 남아 있는 경우(else로 바꾸기 가능)
-            print("과목을 집어넣는 함수 실행")
-
+#remains_day=[0,1,2,3,4]=[월,화,수,목,금]
 
 # 중간 변수 이름 정리
 # n : 학급 수
@@ -110,13 +144,33 @@ def creating_sorted_Lists(subject, subject_times):
 
 # 과목별 횟수만큼 요일 수를 선택하는 함수
 def selecting_day_as_the_number_of_subjects(sorted_subject):
+    # selected_days = [] : selected_days가 요소로 들어가있는 이중리스트
+    # selected_day = [] : 각 인덱스에서 뽑힌 요일 값을 저장하는 리스트
     selected_days=[]
     for i in range(len(sorted_subject)):
-        selected_day=random.sample(range(0~4),sorted_subject_times[i])
+        selected_day=random.sample(remains_day_index, sorted_subject_times[i])
         selected_days.append(selected_day)
     return selected_days
-    
 
+# 요일 중 빈자리에 과목(str)을 넣는 함수
+def selecting_empty_space_from_days(remains_day_index, selected_days):
+
+
+
+
+#         월요일 = 0, 화요일 =1 ...
+#         selected_days = {
+#             [0, 4, 2, 1],
+#             [3, 2, 4],
+#             [4, 0, 1]
+#             }
+
+
+
+
+
+
+#df[df.colums[j]]
 # 요일 중 빈자리 선택하는 함수
 # 여기서부터 수정해야 할 부분
 for i in range(int(n)):  # 학급 수 만큼 테이블 생성
