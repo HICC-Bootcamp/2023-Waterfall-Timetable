@@ -15,7 +15,7 @@
 
 
 <div class="show_result">
-    <!-- {% for squares in class_number %} 시간표 반의개수만큼 -->
+    {% for squares in class_number%}
     <table style="border: 1px solid black; width: 600px; text-align: center;">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for row in rows %}
+        {% for row in col %}
             <tr>
                 <!-- 월화수목금 1교시~8교시 별로 출력 -->
                 <td>{{ loop.index }}</td>
@@ -37,12 +37,16 @@
                 <td>{{ row[2] }}</td>
                 <td>{{ row[3] }}</td>
                 <td>{{ row[4] }}</td>
+
             </tr>
         {% endfor %}
+
         </tbody>
     </table>
-    <!-- {% endfor %} -->
+    {% endfor %}
+    <br>
 </div>
 
 </body>
 </html>
+
