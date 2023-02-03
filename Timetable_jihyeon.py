@@ -11,23 +11,28 @@ import copy
 # 5.   요일 중 빈자리 선택
 # 6.   자리가 빈칸인지 아닌지 확인
 # 7.   전 반이랑 비교해서 5번으로 돌아가기.
-All_timetable = []
-while 1:
+
+
+def main():
+    # 전역변수 선언
+    # n : 학급 수
+    # N : 과목 개수
+    # subject = [] : 과목을 저장하는 리스트
+    # subject_times = [] : 과목별 총 시간을 저장하는 리스트
+    # subject_min = [] : 과목별 하루 최소 시간을 저장하는 리스트
+    # Total_times : 총 합 시간
+
+    All_timetable = []
     n = input("학급 수를 입력:")
-    # n = 학급 수
     N = int(input("과목 개수를 입력:"))
-    # N = 과목 개수
     subject = []
-    # 과목 리스트
     subject_times = []
-    # 과목별 총 시간
     subject_min = []
-    # 과목별 하루 최소 시간
-    i = 0
     Total_times = 0
-    # 총 합 시간
+    i = 0
+
+    # 40시간 분류 하기 위한 while 문 (플라스크로 실행할 때에 필요 없음)
     while i < N:
-        # 40시간 분류 하기 위한 while 문 ( 플라스크로 실행할 땐 필요 없음)
         a = input("과목을 적으시오:")
         subject.append(a)
         b = int(input("과목의 횟수를 적으시오:"))
@@ -35,18 +40,13 @@ while 1:
         Total_times += b
         i += 1
 
-    if Total_times > 40:
-        # 40시간 구별 if문
-        print("입력시간이 40시간을 넘었습니다")
-        continue
-    else:
-        break
+    # 함수 종류
+    # dis_five() : 5의 배수를 판별하는 함수
+    #
 
-
-# def main():
 
 # 5의 배수 판별
-def disFive(int):
+def dis_five(Total_times, ind_num):
     if Total_times % 5 == 0:
         # 세로줄 수
         ind_num = Total_times // 5
