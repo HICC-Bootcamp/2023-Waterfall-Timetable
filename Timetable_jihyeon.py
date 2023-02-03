@@ -110,10 +110,12 @@ def creating_sorted_Lists(subject, subject_times):
 
 
 # 과목별 횟수만큼 요일 수를 선택하는 함수
-def selecting_day_as_the_number_of_subjects():
-    selected_day = random.sample(N)
-    selected_days.append(selected_day)
-    if selected_day
+def selecting_day_as_the_number_of_subjects(sorted_subject):
+    selected_days=[]
+    for i in range(len(sorted_subject)):
+        selected_day=random.sample(range(0~4),sorted_subject_times[i])
+        selected_days.append(selected_day)
+    return selected_days
 
 
 # 요일 중 빈자리 선택하는 함수
