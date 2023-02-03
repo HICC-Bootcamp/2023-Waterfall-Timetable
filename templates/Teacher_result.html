@@ -9,44 +9,68 @@
     <br><br>
     번호 &nbsp; 출결
     <br>
-    <script>
-        function validate(e) {
+        <form>
+        <script>
+            function validate(e) {
 
-            console.log('validate');
-            if (e.value != 'Y' && e.value != 'N' && e.value != 'L') {
-                e.value = '';
+                console.log('validate');
+                if (e.value != 'Y' && e.value != 'N' && e.value != 'L') {
+                    e.value = '';
+                }
+
             }
 
-        }
+            for (var i = 1; i < 31; i++) {
+                document.write("<label for='" + i + "student'>");
+                document.write(i + '&nbsp; &nbsp; &nbsp;');
+                document.write("</lable>");
+                document.write("<input type='text' name='attend' size='1' maxlength='1'>");
 
-        for (var i = 1; i < 31; i++) {
-            document.write("<label for='" + i + "student'>");
-            document.write(i + '&nbsp; &nbsp; &nbsp;');
-            document.write("</lable>");
-            document.write("<input type='text' name='attend' size='2' maxlength='1'/>");
+                document.write("<br>");
+                //$(documen(/[^YNL]/gi, ""));
+                //});t).on("keyup", "input[attendOnly]", function () {
+                //    $(this).val($(this).val().replace
+                let attend = document.getElementsByName('attend')[i - 1];
+                let data = {{
+                    data | tojson
+                }}[i - 1];
+                console.log(data);
+                attend.value = data
+                attend.addEventListener('input', function (e) {
+                    if (attend.value != 'Y' && attend.value != 'N' && attend.value != 'L') {
+                        console.log(attend.value + ' validate');
+                        attend.value = '';
+                    }
+                });
 
-            document.write("<br>");
-            //$(document).on("keyup", "input[attendOnly]", function () {
-            //    $(this).val($(this).val().replace(/[^YNL]/gi, ""));
-            //});
-            let attend = document.getElementsByName('attend')[i-1];
-            let data = {{data|tojson}}[i-1];
-            console.log(data);
-            attend.setAttribute('value',data);
-            //attend.value[i-1] = {{date}}[i-1];
-            attend.addEventListener('input',function(e){
-                if (attend.value != 'Y' && attend.value != 'N' && attend.value != 'L') {
-                    console.log(attend.value+' validate');
-                    attend.value = '';
+            }
+        </script>
+        <script>
+            function submit_data(e) {
+                let submit_elements = document.getElementsByName("attend");
+                let submit_result = []
+
+                for (var i = 0; i < submit_elements.length; i++) {
+                    submit_result[i] = submit_elements[i].value;
                 }
-            });
-
-        }
 
 
-    </script>
+                $.ajax({
+                    url: "/myfunction",
+                    type: "POST",
+                    contentType:'application/json',
+                    data:
+                        JSON.stringify(submit_result)
+                    ,
+                    success: function (response) {
+                    }
+                });
+            }
+
+        </script>
+        <input type="button" value="저장" onclick="submit_data">
+    </form>
     <br><br>
-    <input type="button" value="저장" onclick="teacherresult()">
 
 </div>
 </body>

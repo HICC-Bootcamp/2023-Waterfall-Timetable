@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 import random
 import pandas as pd
 import openpyxl
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -109,7 +111,7 @@ def manager_result():
     return render_template('manager_result.html')
 
 
-@app.route('/Teacher/result/')
+@app.route('/Teacher/result/', methods=["GET", "POST"])
 def teacherresult():
     df = pd.read_excel('./templates/manage_attendance.xlsx')
     data = []
@@ -121,12 +123,14 @@ def teacherresult():
     return render_template('Teacher_result.html', data=data)
 
 
-@app.route('Teacher/result/')
-def connecting_teacherresult_to():
-    df = pd.read_excel()
+@app.route('/myfunction', methods=["GET", "POST"])
+def myfunction():
+    realsubmit = request.form.getlist("submit_result[]",[])
+    # print(json.loads(real submit))
+    print(realsubmit)
 
-
-
+    # return (jsonify({'result':'success','msg':"서버와연결되었음"}))
+    return render_template("Teacherpage_manageClass.html")
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
