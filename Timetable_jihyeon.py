@@ -14,8 +14,6 @@ import copy
 # 7.   전 반이랑 비교해서 5번으로 돌아가기.
 
 def main(void):
-    sorted_subject = []  # 서로의 인덱스가 일치하게 내림차순으로 정렬된 두 리스트
-    sorted_subject_times = []
 
 
 All_timetable = []
@@ -107,6 +105,7 @@ def creating_sorted_Lists(subject, subject_times):
         sorted_subject_times.append(Max)
         del subject_times[Max_order]
         del subject[Max_order]
+    return sorted_subject,sorted_subject_times
 
 
 # 과목별 횟수만큼 요일 수를 선택하는 함수
@@ -116,7 +115,7 @@ def selecting_day_as_the_number_of_subjects(sorted_subject):
         selected_day=random.sample(range(0~4),sorted_subject_times[i])
         selected_days.append(selected_day)
     return selected_days
-
+    
 
 # 요일 중 빈자리 선택하는 함수
 # 여기서부터 수정해야 할 부분
