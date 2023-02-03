@@ -2,7 +2,8 @@ import pandas as pd
 import random
 import copy
 
-# 1.   표
+# Timetable__how_to_create_the_timetables
+# 1.   표 만들기
 # 2.   월~금 Type 비교
 # - (1) 같을시 >> 모두 빈칸인지 비교
 # - (2) 다를시 >> 빈칸이 1개는 무조건 있음
@@ -10,8 +11,18 @@ import copy
 # 4.   과목별 횟수만큼 요일 수 선택
 # 5.   요일 중 빈자리 선택
 # 6.   자리가 빈칸인지 아닌지 확인
-# 7.   전 반이랑 비교해서 5번으로 돌아가기.
+# 7.   전 반이랑 비교해서 5번으로 돌아가기
 
+
+# Timetable_kind_of_functions
+# main() : 실질적 실행 함수
+# dis_five() : 5의 배수를 판별하는 함수
+# make_Df(n, con) : 리스트에 DataFrame을 추가하는 함수(=3차원 배열을 만드는 함수)
+# com_full_with_string(ind_num) : 요일(colnums)의 리스트가 str으로 모두 채워졌는지의 여부를 검사하는 함수
+# creating_sorted_Lists(subject, subject_times) : 시수가 많은 과목을 구하는 용도의 리스트 만들기 함수(리스트 정렬 함수)
+# selecting_day_as_the_number_of_subjects(sorted_subject) : 과목별 횟수 만큼 요일 수를 선택하는 함수
+# selecting_empty_space_from_days(remains_day_index, selected_days) : 요일 중 빈자리에 과목(str)을 넣는 함수
+# comparing_with_maken_timetable_before : 전에 만들어졌던 시간표와 중복되는 시간표가 만들어지는 경우를 방지하는 함수
 
 def main():
     # 전역변수 선언
@@ -31,7 +42,7 @@ def main():
     Total_times = 0
     i = 0
 
-    # 40시간 분류 하기 위한 while 문 (플라스크로 실행할 때에 필요 없음)
+    # 시간표 생성에 필요한 기본값 받기
     while i < N:
         a = input("과목을 적으시오:")
         subject.append(a)
@@ -40,9 +51,6 @@ def main():
         Total_times += b
         i += 1
 
-    # 함수 종류
-    # dis_five() : 5의 배수를 판별하는 함수
-    #
 
 
 # 5의 배수 판별
