@@ -2,18 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
 import random
-<<<<<<< HEAD
+
 import pandas as pd
 import openpyxl
-<<<<<<< HEAD
+
 import requests
 from bs4 import BeautifulSoup
-=======
-=======
-import copy
 
->>>>>>> 2d9f5d5 (목요일 수정)
->>>>>>> 9171e1ee524a141d43963fe1ce5f5c2015c0ae3d
+import copy
 
 app = Flask(__name__)
 
