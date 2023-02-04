@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,jsonify,json
 import pandas as pd
 import openpyxl
 import copy
+import random
 
 app = Flask(__name__)
 
