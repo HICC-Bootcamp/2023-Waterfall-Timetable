@@ -1,27 +1,80 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+	@font-face{
+		font-family: 'BMfont';
+		src: url(BMHANNAPro.ttf);
+	}
+	div{
+		color:black;
+		font-size: 50px;
+		text-align: center;
+		text-decoration: none;}
+	a{
+		color:#a2d2e2;
+		text-decoration: none;}
+	body {
+		background: white;
+		  font-size: 30px;
+	}
+
+	.btn {
+		background-color: #a2d2e2;
+		border: none;
+		width: 100px;
+		height: 75px;
+		border-radius: 4px;
+		position: relative;
+        right: 120px;
+	}
+		.btn i{
+		color: white;
+		font-size: 80px;
+	}
+	select {
+		font-size: 25px;
+		font-weight: bold;
+		color: #a2d2e2;
+		border-radius: 3px
+	}
+	input{
+		background-color: #a2d2e2;
+		border: none;
+		width: 80px;
+		height: 45px;
+		border-radius: 4px;
+		font-size: 23px;
+		font-weight: bold;
+		color: white;
+	}
+
+
+
+</style>
+
 </head>
 <body>
 <h1><strong><p>
 <div style="text-align:center"><a href="/"">학급관리 프로그램</a></p></strong></h1>
 </div>
-<br>
-<div style="text-align:right"><button onclick="">HOME</button></div>
-<br>
-<div style="text-align:center">
+<div style="text-align:right"><button class= btn onclick="window.location.href='/'"><i class="fa fa-home"></i></button></div>
+<div style="text-align:center;font-size:30px">
 	<p>
 		<strong>선생님의 담당과목을 선택해주세요.
 	</p>
 	</strong>
 </div>
 <br>
-<div style="text-align:center">
+<div style="text-align:center; font-size:25px">
 	<form action="/Teacherpage/2/" method= "post">
-		<p>
+		<p><strong>
 			과목입력:
-			<select name="subject" style="width:60px;height:30px;">
+			</strong>
+			<select name="subject" style="width:80px;height:30px; font-size:23px">
 				<option value="국어1" selected>국어1</option>
 				<option value="국어2">국어2</option>
 				<option value="영어">영어</option>
