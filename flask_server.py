@@ -1,27 +1,7 @@
 from flask import Flask, render_template, request,jsonify,json
 import pandas as pd
-import numpy as np
-import random
-<<<<<<< HEAD
-import pandas as pd
-import openpyxl
-=======
-<<<<<<< HEAD
-
-import pandas as pd
-import openpyxl
-
-import requests
-from bs4 import BeautifulSoup
-
-import copy
-=======
-import pandas as pd
 import openpyxl
 import copy
-
->>>>>>> e019dff (에라모르겠다)
->>>>>>> cc790bf0f450c3ee65eecc91b24cb568ad749e70
 
 app = Flask(__name__)
 
@@ -231,14 +211,11 @@ def teacherresult():
     df = pd.read_excel('./templates/manage_attendance.xlsx')
     data = []
     for i in range(30):
-        # globals()["student{}".format(i+1)]= df.loc[i,"출결"]
-        # print(globals()["student{}".format(i+1)])
         data.append(df.loc[i, "출결"])
     print(data)
     return render_template('Teacher_result.html', data=data)
 
 
-<<<<<<< HEAD
 @app.route('/myfunction', methods=["POST"])
 def myfunction():
     data = json.loads(request.data)
@@ -252,19 +229,6 @@ def myfunction():
     wb.save('./templates/manage_attendance.xlsx')
     return jsonify(response=list_)
 
-=======
-<<<<<<< HEAD
-@app.route('/myfunction', methods=["GET", "POST"])
-def myfunction():
-    realsubmit = request.form.getlist("submit_result[]",[])
-    # print(json.loads(real submit))
-    print(realsubmit)
-=======
-
-
->>>>>>> e019dff (에라모르겠다)
->>>>>>> cc790bf0f450c3ee65eecc91b24cb568ad749e70
-
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
@@ -272,7 +236,7 @@ if __name__ == '__main__':
 
 def checking_existence_of_timetable():
     context = False
-    if("현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다.")
+    if("현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."):
         context = True
     return render_template('Teacherpage_1.html'), render_template('studentpage_1.html')
 
