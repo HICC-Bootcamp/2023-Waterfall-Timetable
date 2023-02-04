@@ -2,21 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
 import random
-<<<<<<< HEAD
 
 import pandas as pd
 import openpyxl
 
-import requests
-from bs4 import BeautifulSoup
 
 import copy
-=======
+
 import pandas as pd
 import openpyxl
 import copy
 
->>>>>>> e019dff (에라모르겠다)
 
 app = Flask(__name__)
 
@@ -36,10 +32,31 @@ def teacher():
 def teacher_2():
     if request.method == "POST":
         subject_select = request.form.get("subject")
-        df=pd.read_excel('ALL_class.xlsx', sheet_name=None)
-        df.values.tolist()
+        df = pd.read_excel('ALL_class.xlsx', sheet_name=None)
 
-        return render_template('Teacherpage_2.html', subject_select=subject_select)
+        class_table = list()
+        for class_ in range(0, num_of_class):
+            df[f'{class_ + 1}반'] = df[f'{class_ + 1}반'].drop(df[f'{class_ + 1}반'].columns[0], axis=1)
+            class_table.append(df[f'{class_+1}반'].values.tolist())
+
+        korean1_table = [[" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "]]
+
+        for i in range(0,num_of_class):
+            for j in range(0, 8):
+                for k in range(0, 5):
+                    if class_table[i][j][k] == subject_select:
+                        korean1_table[j][k] = f'{i+1}반'
+
+        print(korean1_table)
+
+        return render_template('Teacherpage_2.html', subject_select=subject_select, class_table=korean1_table)
     return render_template('Teacherpage_2.html')
 
 
@@ -233,16 +250,11 @@ def teacherresult():
     return render_template('Teacher_result.html', data=data)
 
 
-<<<<<<< HEAD
 @app.route('/myfunction', methods=["GET", "POST"])
 def myfunction():
     realsubmit = request.form.getlist("submit_result[]",[])
     # print(json.loads(real submit))
     print(realsubmit)
-=======
-
-
->>>>>>> e019dff (에라모르겠다)
 
     # return (jsonify({'result':'success','msg':"서버와연결되었음"}))
     return render_template("Teacherpage_manageClass.html")

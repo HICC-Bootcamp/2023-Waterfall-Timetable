@@ -17,7 +17,32 @@
     <div style="text-align:center"><h2>{{subject_select}} 담당과목 관리</h2></div>
     <br><br>
 
-    <h3><div style="text-align:center">과목별 시간표</div></p></h3>
+    <h3 style="text-align:center">과목별 시간표</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>/</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for period in class_table %}
+            <tr>
+                <th>{{ loop.index }}</th>
+                <td>{{ period.0 }}</td>
+                <td>{{ period.1 }}</td>
+                <td>{{ period.2 }}</td>
+                <td>{{ period.3 }}</td>
+                <td>{{ period.4 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 
 
