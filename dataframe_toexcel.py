@@ -1,7 +1,13 @@
+
+from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import random
 import copy
 
+
+app = Flask(__name__)
+
+@app.route('/manager_result/', methods=["GET", "POST"])
 def manager_result():
     if request.method == "POST":
         class_number = int(request.form.get("class_number"))#학급의 개수를 post로 받아서 시간표를 반복생성할때 사용
@@ -60,9 +66,12 @@ def manager_result():
                             del subject_copy[subject_order]
                             del subject_times_copy[subject_order]
                     df[df.columns[j]] = class_subject
-        class_list = []
-        for x in range(0, class_number):
-            class_list.append(all_timetable[x].values.tolist())
-            class_x = []
-            class_x.append(all_timetable[x].values.tolist())
-            print(class_x)
+            table1=pd.DataFrame(all_timetable[0])
+            print(table1)
+            table1.to_excel('ALLTIMETABLE.xlsx')
+
+
+
+        return render_template('manager_result.html', class_number=class_number)
+
+    return render_template('manager_result.html')

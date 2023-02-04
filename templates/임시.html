@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,129 +13,96 @@
  <div style="text-align:right"><button onclick="window.location.href='/'">HOME</button></div>
  <br>
 
- <form action="/manager_result/" method="post">
- <h3>
-    <div style="text-align:center">총 학급수:
-    <select name="class_number" style="width:60px;height:30px;">
-        <option value="1" selected>1개</option>
-        <option value="2">2개</option>
-        <option value="3">3개</option>
-        <option value="4">4개</option>
-        <option value="5">5개</option>
-        <option value="6">6개</option>
-        <option value="7">7개</option>
-        <option value="8">8개</option>
-    </select>
+    {% if class_number == 1 %}
+    <div class="show_result">
+
+        <table style="border: 1px solid black; width: 600px; text-align: center;">
+        <thead>
+            <tr>
+                <th>/</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for item in class_list %}
+            <tr>
+            <td>{{loop.index}}</td>
+            <td>{{item.0[0]}}</td>
+            <td>{{item.0[1]}}</td>
+            <td>{{item.0[2]}}</td>
+            <td>{{item.0[3]}}</td>
+            <td>{{item.0[4]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
     </div>
- </h3>
-<ul>
-    <li><div style="text-align:center">
-        <label> 국어1:</label>
-        <select name="korean1_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-            <option value="1">1시간</option>
-            <option value="2">2시간</option>
-            <option value="3">3시간</option>
-            <option value="4">4시간</option>
-            <option value="5">5시간</option>
-        </select>
-    </div> </li>
-     <br>
+    {% endif %}
 
-    <li><div style="text-align:center">
-        <label> 국어2:</label>
-        <select name="korean2_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-        <option value="1">1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-     <br>
 
-    <li><div style="text-align:center">
-        <label> 수학1:</label>
-        <select name="math1_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-        <option value="1">1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-     <br>
+    {% if class_number == 2 %}
+    <div class="show_result">
 
-    <li><div style="text-align:center">
-        <label> 수학2:</label>
-        <select name="math2_class" style="width:60px;height:30px;">
-            <option value="0"selected>0시간</option>
-        <option value="1" >1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-     <br>
+        <table style="border: 1px solid black; width: 600px; text-align: center;">
+        <thead>
+            <tr>
+                <th>/</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for item in class_list %}
+            <tr>
+            <td>{{loop.index}}</td>
+            <td>{{item.0[0]}}</td>
+            <td>{{item.0[1]}}</td>
+            <td>{{item.0[2]}}</td>
+            <td>{{item.0[3]}}</td>
+            <td>{{item.0[4]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
 
-    <li><div style="text-align:center">
-        <label> 영어 :</label>
-        <select name="english_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-        <option value="1">1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-     <br>
+    <div class="show_result">
 
-    <li><div style="text-align:center">
-        <label> 사회 :</label>
-        <select name="social_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-            <option value="1">1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-     <br>
-
-    <li><div style="text-align:center">
-        <label> 과학 :</label>
-        <select name="science_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-        <option value="1">1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-     <br>
-
-    <li><div style="text-align:center">
-        <label> 체육 :</label>
-        <select name="physical_class" style="width:60px;height:30px;">
-            <option value="0" selected>0시간</option>
-        <option value="1">1시간</option>
-        <option value="2">2시간</option>
-        <option value="3">3시간</option>
-        <option value="4">4시간</option>
-        <option value="5">5시간</option>
-    </select>
-    </div></li>
-    </ul>
-
-<br>
-<div style="text-align:right"><button type="submit">시간표 생성</button></div>
- </form>
+        <table style="border: 1px solid black; width: 600px; text-align: center;">
+        <thead>
+            <tr>
+                <th>/</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for item in class_list %}
+            <tr>
+            <td>{{loop.index}}</td>
+            <td>{{item.1[0]}}</td>
+            <td>{{item.1[1]}}</td>
+            <td>{{item.1[2]}}</td>
+            <td>{{item.1[3]}}</td>
+            <td>{{item.1[4]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    {% endif %}
+    <br>
+</div>
 
 </body>
 </html>

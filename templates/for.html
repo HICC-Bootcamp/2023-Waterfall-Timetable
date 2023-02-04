@@ -15,10 +15,10 @@
 
 
 <div class="show_result">
-    {% for squares in class_time %}
+    {% for squares in range(0,class_number) %}
 
     <table style="border: 1px solid black; width: 600px; text-align: center;">
-        <caption>{{loop.index}}반</caption>
+        <caption>{{squares+1}}반</caption>
         <thead>
             <tr>
                 <th>/</th>
@@ -29,18 +29,20 @@
                 <th>금</th>
             </tr>
         </thead>
-        {% for period in squares %}
+        {% if class_number==1 %}
+        {% for item in class_1 %}
         <tbody>
-        <tr>
-            <th>{{loop.index}}</th>
-            <td>{{ period.0 }}</td>
-            <td>{{ period.1 }}</td>
-            <td>{{ period.2 }}</td>
-            <td>{{ period.3 }}</td>
-            <td>{{ period.4 }}</td>
-        </tr>
+            <td>{{loop.index}}교시</td><td>{{item.0}}</td><td>{{item.1}}</td><td>{{item.2}}</td><td>{{item.3}}</td><td>{{item.4}}</td>
         </tbody>
         {% endfor %}
+
+        {% for item in a %}
+        <tbody>
+            <td>{{loop.index}}교시</td><td>{{item.0}}</td><td>{{item.1}}</td><td>{{item.2}}</td><td>{{item.3}}</td><td>{{item.4}}</td>
+        </tbody>
+        {% endfor %}
+
+        {% endif %}}
         </table>
     {% endfor %}
     <br>
@@ -48,17 +50,3 @@
 
 </body>
 </html>
-
-
-{% for row in rows%}
-            <tr>
-                <!-- 월화수목금 1교시~8교시 별로 출력 -->
-                <td>{{ loop.index }}</td>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-                <td>{{ row[3] }}</td>
-                <td>{{ row[4] }}</td>
-
-            </tr>
-        {% endfor %}
