@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,jsonify,json
 import pandas as pd
 import openpyxl
 import copy
+import random
 
 app = Flask(__name__)
 
@@ -21,10 +22,31 @@ def teacher():
 def teacher_2():
     if request.method == "POST":
         subject_select = request.form.get("subject")
-        df=pd.read_excel('ALL_class.xlsx', sheet_name=None)
-        df.values.tolist()
+        df = pd.read_excel('ALL_class.xlsx', sheet_name=None)
 
-        return render_template('Teacherpage_2.html', subject_select=subject_select)
+        class_table = list()
+        for class_ in range(0, num_of_class):
+            df[f'{class_ + 1}반'] = df[f'{class_ + 1}반'].drop(df[f'{class_ + 1}반'].columns[0], axis=1)
+            class_table.append(df[f'{class_+1}반'].values.tolist())
+
+        korean1_table = [[" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "],
+                       [" ", " ", " ", " ", " "]]
+
+        for i in range(0,num_of_class):
+            for j in range(0, 8):
+                for k in range(0, 5):
+                    if class_table[i][j][k] == subject_select:
+                        korean1_table[j][k] = f'{i+1}반'
+
+        print(korean1_table)
+
+        return render_template('Teacherpage_2.html', subject_select=subject_select, class_table=korean1_table)
     return render_template('Teacherpage_2.html')
 
 
@@ -229,14 +251,19 @@ def myfunction():
     wb.save('./templates/manage_attendance.xlsx')
     return jsonify(response=list_)
 
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
 
 
+import os
+
 def checking_existence_of_timetable():
     context = False
-    if("현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."):
+    path = "/ALL_class.xlsx"
+    if(os.path.isfile(path)):
+# "현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."
         context = True
-    return render_template('Teacherpage_1.html'), render_template('studentpage_1.html')
+    return render_template('Teacherpage_1.html', context=context), render_template('studentpage_1.html', context=context)
 
