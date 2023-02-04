@@ -99,7 +99,7 @@ def student2():
         df = pd.read_excel('ALL_class.xlsx', sheet_name=None)
         df_list = df[f'{class_ind}반'].values.tolist()
 
-        return render_template('studentpage_2.html', df_list=df_list)
+        return render_template('studentpage_2.html', df_list=df_list, class_ind=class_ind)
     return render_template('studentpage_2.html')
 
 
