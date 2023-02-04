@@ -1,18 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request,jsonify,json
 import pandas as pd
-import numpy as np
+import openpyxl
+import copy
 import random
-
-import pandas as pd
-import openpyxl
-
-
-import copy
-
-import pandas as pd
-import openpyxl
-import copy
-
 
 app = Flask(__name__)
 
@@ -243,21 +233,37 @@ def teacherresult():
     df = pd.read_excel('./templates/manage_attendance.xlsx')
     data = []
     for i in range(30):
-        # globals()["student{}".format(i+1)]= df.loc[i,"출결"]
-        # print(globals()["student{}".format(i+1)])
         data.append(df.loc[i, "출결"])
     print(data)
     return render_template('Teacher_result.html', data=data)
 
 
-@app.route('/myfunction', methods=["GET", "POST"])
+@app.route('/myfunction', methods=["POST"])
 def myfunction():
-    realsubmit = request.form.getlist("submit_result[]",[])
-    # print(json.loads(real submit))
-    print(realsubmit)
+    data = json.loads(request.data)
+    data.get('submit_result')
+    list_ = data['submit_result']
+    print(list_)
+    wb = openpyxl.load_workbook('./templates/manage_attendance.xlsx')
+    sheet = wb.active
+    for i in range(30):
+        sheet.cell(row=i+2, column=2).value = list_[i]
+    wb.save('./templates/manage_attendance.xlsx')
+    return jsonify(response=list_)
 
-    # return (jsonify({'result':'success','msg':"서버와연결되었음"}))
-    return render_template("Teacherpage_manageClass.html")
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
+
+
+import os
+
+def checking_existence_of_timetable():
+    context = False
+    path = "/ALL_class.xlsx"
+    if(os.path.isfile(path)):
+# "현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."
+        context = True
+    return render_template('Teacherpage_1.html', context=context), render_template('studentpage_1.html', context=context)
+

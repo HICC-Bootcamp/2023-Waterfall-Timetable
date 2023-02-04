@@ -8,13 +8,54 @@
                 src: url(BMHANNAPro.ttf);  }
             div{
                 color:black;
-                font-size: 30px;
+                font-size: 50px;
                 text-align: center;
                 text-decoration: none;}
             a{
-                color:rgb(107, 109, 208);
+                color:#a2d2e2;
                 text-decoration: none;}
-        </style>
+            body {
+  background: white;
+  font-size: 30px;
+}
+
+.container {
+    padding: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container .btn-1 {
+    background-color: #a2d2e2;
+    border: none;
+    width: 100px;
+    height: 75px;
+    border-radius: 4px;
+}
+
+.container .btn-1 a{
+    color: white;
+    font-size: 26px;
+}
+
+
+.container .btn-1 a:hover {
+  color: black;
+}
+
+.container .btn-1 a:after {
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.container .btn-1 a:hover:after {
+  height: 100%;
+}
+
+
+  </style>
 
 </head>
 <body>
@@ -22,10 +63,12 @@
  <div style="text-align:center">
 	<a href="/">학급관리 프로그램</a></p></strong></h1>
  </div>
- <br><br><br><br><br><br>
+ <br><br>
 
-
- <button><a href="/manager/">관리자</a></button> <div style="text-align:right"><button><a href="studentpage/1/">학생</a></button></div>
- <div style="text-align:center"><button><a href="/Teacherpage/1/">선생님</a></button></div>
+<div class="container" style="text-align:center">
+    <button class="btn-1"><a href="/manager/">관리자</a></button>
+    <button class="btn-1"><a href="studentpage/1/">학생</a></button>
+    <button class="btn-1"><a href="/Teacherpage/1/">선생님</a></button>
+</div>
 </body>
 </html>
