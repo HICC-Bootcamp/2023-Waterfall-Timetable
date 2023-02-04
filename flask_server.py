@@ -233,10 +233,13 @@ if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
 
+import os
 
 def checking_existence_of_timetable():
     context = False
-    if("현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."):
+    path = "/ALL_class.xlsx"
+    if(os.path.isfile(path)):
+# "현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."
         context = True
-    return render_template('Teacherpage_1.html'), render_template('studentpage_1.html')
+    return render_template('Teacherpage_1.html', context=context), render_template('studentpage_1.html', context=context)
 
