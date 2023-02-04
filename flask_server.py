@@ -3,10 +3,21 @@ import pandas as pd
 import openpyxl
 import copy
 import random
+import os
 
 app = Flask(__name__)
 
 num_of_class = 0
+
+
+def checking_existence_of_timetable():
+    path = "./ALL_class.xlsx"
+    # "현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."
+    if os.path.isfile(path):
+        return True
+    else:
+        return False
+
 
 @app.route('/')
 def initial():
@@ -15,7 +26,10 @@ def initial():
 
 @app.route('/Teacherpage/1/', )
 def teacher():
-    return render_template('Teacherpage_1.html')
+    if checking_existence_of_timetable():
+        return render_template('Teacherpage_1.html')
+    else:
+        return render_template('initialpage_error.html')
 
 
 @app.route('/Teacherpage/2/', methods=["GET", "POST"])
@@ -71,7 +85,10 @@ def teacher_4():
 
 @app.route('/studentpage/1/', methods=["GET", "POST"])
 def student():
-    return render_template('studentpage_1.html', num_of_class=num_of_class)
+    if checking_existence_of_timetable():
+        return render_template('studentpage_1.html', num_of_class=num_of_class)
+    else:
+        return render_template('initialpage_error.html')
 
 
 @app.route('/studentpage/2/', methods=["GET", "POST"])
@@ -255,15 +272,4 @@ def myfunction():
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")
-
-
-import os
-
-def checking_existence_of_timetable():
-    context = False
-    path = "/ALL_class.xlsx"
-    if(os.path.isfile(path)):
-# "현재 디렉토리에 엑셀파일이 있는지 없는지의 여부를 따지는 코드가 없다."
-        context = True
-    return render_template('Teacherpage_1.html', context=context), render_template('studentpage_1.html', context=context)
 
