@@ -23,5 +23,5 @@
 |팀장/총괄|백엔드/프론트엔드|프론트엔드/백엔드|백엔드/프론트엔드|
 |:---:|:---:|:---:|:---:|
 |**이지우**|**김효진**|**오지현**|**이지우**|
-|![image](https://avatars.githubusercontent.com/u/113875872?v=4)|![image](https://avatars.githubusercontent.com/u/122160725?v=4)|![image](https://avatars.githubusercontent.com/u/121949750?v=4)|![image](https://avatars.githubusercontent.com/u/113361524?v=4)|
+|![image](https://avatars.githubusercontent.com/u/113875872?v=4)<a href="https://github.com/Leejiwoo011201">|![image](https://avatars.githubusercontent.com/u/122160725?v=4)<a href="https://github.com/gaeulgauel">|![image](https://avatars.githubusercontent.com/u/121949750?v=4)<a href ="https://github.com/wlqgkrry">|![image](https://avatars.githubusercontent.com/u/113361524?v=4)<a href ="https://github.com/insa658">|
 
