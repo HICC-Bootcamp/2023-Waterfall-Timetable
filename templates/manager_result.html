@@ -45,20 +45,7 @@
     {% endfor %}
     <br>
 </div>
+<button onclick="window.location.href='/manager'">시간표 재생성</button>
 
 </body>
 </html>
-
-
-{% for row in rows%}
-            <tr>
-                <!-- 월화수목금 1교시~8교시 별로 출력 -->
-                <td>{{ loop.index }}</td>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-                <td>{{ row[3] }}</td>
-                <td>{{ row[4] }}</td>
-
-            </tr>
-        {% endfor %}
