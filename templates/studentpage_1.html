@@ -64,6 +64,7 @@
  </div>
  <div style="text-align:center; font-size:25px;">
 	<form action="/studentpage/2/" method="post">
+<<<<<<< HEAD
 		<p><strong>반입력:</strong>
 			<select name="class_ind" style="width:60px;height:30px; font-size:23px;">
             <option value="1" selected>1반</option>
@@ -72,6 +73,16 @@
             {% endfor %}
             </select>
 
+=======
+		<p>
+			반입력:
+			<select name="class_ind" style="width:60px;height:30px;">
+				<option value="1" selected>1반</option>
+				{% for class in range(2, num_of_class+1) %}
+				<option value="{{ class }}">{{ class }}반</option>
+				{% endfor %}
+			</select>
+>>>>>>> cc790bf0f450c3ee65eecc91b24cb568ad749e70
 		<br><br>
 		</div>
 		<div style="text-align:center">

@@ -23,15 +23,11 @@
 	<form action="/Teacherpage/4/" method="post">
 		<p>
 			과목입력:
-			<select name="class" style="width:60px;height:30px;">
-				<option value="1반" selected>1반</option>
-				<option value="2반">2반</option>
-				<option value="3반">3반</option>
-				<option value="4반">4반</option>
-				<option value="5반">5반</option>
-				<option value="6반">6반</option>
-				<option value="7반">7반</option>
-				<option value="8반">8반</option>
+			<select name="class_ind" style="width:60px;height:30px;">
+				<option value="1" selected>1반</option>
+				{% for class in range(2, num_of_class+1) %}
+				<option value="{{ class }}">{{ class }}반</option>
+				{% endfor %}
 			</select>
 		</div>
 		<div style="text-align:center">

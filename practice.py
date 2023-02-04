@@ -66,13 +66,14 @@ def manager_result():
                             del subject_copy[subject_order]
                             del subject_times_copy[subject_order]
                     df[df.columns[j]] = class_subject
-        col=[1,2,3,4,5,6,7,8]
-        df = pd.DataFrame(all_timetable[0],columns=['월','화','수','목','금'])
+        a=all_timetable[0]
 
 
-        return render_template('manager_result.html', class_number=class_number, All_timetable=all_timetable, col=col, M=df_html)
+        return render_template('manager_result.html', class_number=class_number, class_list=class_list)
 
     return render_template('manager_result.html')
+
+
 
 
 if __name__ == '__main__':
@@ -81,33 +82,5 @@ if __name__ == '__main__':
 
 
 
-data={'월':["국어1", "국어2", "영어", "체육", "수학2"],
-      '화':["국어1", "국어2", "영어", "체육", "수학2"],
-      '수':["국어1", "국어2", "영어", "체육", "수학2"],
-      '목':["국어1", "국어2", "영어", "체육", "수학2"],
-      '금':["국어1", "국어2", "영어", "체육", "수학2"]
-      }
-df_manage = pd.DataFrame(data)
-html = df_manage.to_html()
-print(html)
 
-
-
-
-@app.route('/manager')
-def sub():
-    data = {'월': ["국어1", "국어2", "영어", "체육", "수학2"],
-            '화': ["국어1", "국어2", "영어", "체육", "수학2"],
-            '수': ["국어1", "국어2", "영어", "체육", "수학2"],
-            '목': ["국어1", "국어2", "영어", "체육", "수학2"],
-            '금': ["국어1", "국어2", "영어", "체육", "수학2"]
-            }
-    df=pd.DataFrame(data)
-    return redirect(url_for('manager_result', uid=1, df=df)), render_template('manager.html')
-
-
-@app.route('/manager_result/<int uid>/<df>')
-def rec(uid, df):
-
-    return df.to_html()
 
