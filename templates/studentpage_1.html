@@ -1,7 +1,53 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+	@font-face{
+		font-family: 'BMfont';
+		src: url(BMHANNAPro.ttf);
+	}
+	div{
+		color:black;
+		font-size: 50px;
+		text-align: center;
+		text-decoration: none;}
+	.select_class{
+		color:black;
+		font-size: 30px;
+		text-align: center;
+		text-decoration: none;}
+	a{
+		color:#a2d2e2;
+		text-decoration: none;}
+	body {
+		background: white;
+		  font-size: 30px;
+	}
+
+	.btn {
+		background-color: #a2d2e2;
+		border: none;
+		width: 100px;
+		height: 75px;
+		border-radius: 4px;
+	}
+
+	.btn i{
+		color: white;
+		font-size: 50px;
+	}
+
+	select {
+		font-size: 25px;
+		font-weight: bold;
+		color: #a2d2e2;
+		border-radius: 3px
+	}
+
+	</style>
 </head>
 <body>
  <h1><strong><p>
@@ -9,29 +55,23 @@
 	<a href="/">학급관리 프로그램</a></p></strong></h1>
  </div>
  <br>
- <div style="text-align:right"><button onclick="window.location.href='/'">HOME</button></div>
- <br>
- <div style="text-align:center">
+ <div style="text-align:right"><button class= btn onclick="window.location.href='/'"><i class="fa fa-home"></i></button></div>
+ <div class= "select_class" style="text-align:center">
 	<p>
 		<strong>본인의 학급을 선택해주세요.
 	</p>
 	</strong>
  </div>
- <br>
- <div style="text-align:center">
+ <div style="text-align:center; font-size:25px;">
 	<form action="/studentpage/2/" method="post">
-		<p>
-			반입력:
-			<select name="class" style="width:60px;height:30px;">
-				<option value="1반" selected>1반</option>
-				<option value="2반">2반</option>
-				<option value="3반">3반</option>
-				<option value="4반">4반</option>
-				<option value="5반">5반</option>
-				<option value="6반">6반</option>
-				<option value="7반">7반</option>
-				<option value="8반">8반</option>
-			</select>
+		<p><strong>반입력:</strong>
+			<select name="class_ind" style="width:60px;height:30px; font-size:23px;">
+            <option value="1" selected>1반</option>
+            {% for class in range(2, num_of_class+1) %}
+            <option value="{{ class }}">{{ class }}반</option>
+            {% endfor %}
+            </select>
+
 		<br><br>
 		</div>
 		<div style="text-align:center">

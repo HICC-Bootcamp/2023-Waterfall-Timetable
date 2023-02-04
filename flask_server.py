@@ -1,19 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request,jsonify,json
 import pandas as pd
 import numpy as np
 import random
-<<<<<<< HEAD
 import pandas as pd
 import openpyxl
-<<<<<<< HEAD
-import requests
-from bs4 import BeautifulSoup
-=======
-=======
-import copy
-
->>>>>>> 2d9f5d5 (목요일 수정)
->>>>>>> 9171e1ee524a141d43963fe1ce5f5c2015c0ae3d
 
 app = Flask(__name__)
 
@@ -134,14 +124,20 @@ def teacherresult():
     return render_template('Teacher_result.html', data=data)
 
 
-@app.route('/myfunction', methods=["GET", "POST"])
+@app.route('/myfunction', methods=["POST"])
 def myfunction():
-    realsubmit = request.form.getlist("submit_result[]",[])
-    # print(json.loads(real submit))
-    print(realsubmit)
+    data = json.loads(request.data)
+    data.get('submit_result')
+    list_ = data['submit_result']
+    print(list_)
+    wb = openpyxl.load_workbook('./templates/manage_attendance.xlsx')
+    sheet = wb.active
+    for i in range(30):
+        sheet.cell(row=i+2, column=2).value = list_[i]
+    wb.save('./templates/manage_attendance.xlsx')
+    return jsonify(response=list_)
 
-    # return (jsonify({'result':'success','msg':"서버와연결되었음"}))
-    return render_template("Teacherpage_manageClass.html")
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host="0.0.0.0", port="9999")

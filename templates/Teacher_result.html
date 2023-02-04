@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div style="text-align:center"> 출석:Y 결석:N 지각:L
+<div style="text-align:center" > 출석:Y 결석:N 지각:L
     <br><br>
     번호 &nbsp; 출결
     <br>
-        <form>
+        <form method="post">
         <script>
             function validate(e) {
 
@@ -46,38 +47,45 @@
             }
         </script>
         <script>
-            function submit_data(e) {
-                let submit_elements = document.getElementsByName("attend");
-                let submit_result = []
 
-                for (var i = 0; i < submit_elements.length; i++) {
-                    submit_result[i] = submit_elements[i].value;
+            $(function() {
+                $("#on").click(function submitdata(e) {
+                    e.preventDefault();
+                    let submit_elements = document.getElementsByName("attend");
+                    let submit_result = [];
+
+                    for (var i = 0; i < submit_elements.length; i++) {
+                        submit_result[i] = submit_elements[i].value;
+                    }
+
+                    let submit_result_to_json = {
+                        "submit_result": submit_result
+                    }
+                    functionn(submit_result_to_json);
+            });
+            });
+
+            function functionn(submit_result){
+                    $.ajax({
+                        url: "/myfunction",
+                        type: "POST",
+                        contentType: 'application/json; charset = utf-8',
+                        datatype: 'json',
+                        data:
+                            JSON.stringify(submit_result),
+                        success: function(response){
+                            console.log(response);
+                            window.location.replace('/Teacherpage/4/');
+                        },
+                        error: function(error){
+                            console.log(error);
+
+                    }})
                 }
 
-        // excel로 input value값 가져오기
-        for(var j = 0; j < 30; j++)
-        {
-            var Text_result = [];
-            Text_result[j] = document.getElementById('attend.value').value;
-        }
-
-
-
-
-                $.ajax({
-                    url: "/myfunction",
-                    type: "POST",
-                    contentType:'application/json',
-                    data:
-                        JSON.stringify(submit_result)
-                    ,
-                    success: function (response) {
-                    }
-                });
-            }
-
         </script>
-        <input type="button" value="저장" onclick="submit_data">
+            <BR><BR>
+            <button id="on" type="button">저장</button>
     </form>
     <br><br>
 
