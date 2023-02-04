@@ -2,26 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>manager page</title>
     <style>
         li {
             list-style: none;
         }
+        label{
+            font-size:25px
+        }
+        @font-face{
+		font-family: 'BMfont';
+		src: url(BMHANNAPro.ttf);
+	}
+	div{
+		color:black;
+		font-size: 50px;
+		text-align: center;
+		text-decoration: none;}
+	a{
+		color:#a2d2e2;
+		text-decoration: none;}
+	body {
+		background: white;
+		  font-size: 30px;
+	}
+        select {
+		font-size: 23px;
+		font-weight: bold;
+		color: #a2d2e2;
+		border-radius: 3px;}
+
+	.btn{
+		background-color: #a2d2e2;
+		border: none;
+		width: 100px;
+		height: 75px;
+		border-radius: 4px;
+		position: relative;
+        right: 120px;
+	}
+
+	.btn i{
+		color: white;
+		font-size: 80px;
+	}
+    button{
+        font-size:25px;background-color: #a2d2e2;
+		border: none;
+		width: 150px;
+		height: 60px;
+		border-radius: 4px;
+		font-size: 23px;
+		font-weight: bold;
+		color: white;
+    }
     </style>
 </head>
 <body>
- <h1><strong><p>
- <div style="text-align:center">
-	<a href="/">학급관리 프로그램</a></p></strong></h1>
+ <h1><div style="text-align:center">
+	<a href="/" style="font-weight: bold;">학급관리 프로그램</a></h1>
  </div>
- <br>
- <div style="text-align:right"><button onclick="window.location.href='/'">HOME</button></div>
- <br>
-
+ <div style="text-align:right"><button class= btn onclick="window.location.href='/'"><i class="fa fa-home"></i></button></div>
  <form action="/manager_result/" method="post">
- <h3>
-    <div style="text-align:center">총 학급수:
-    <select name="class_number" style="width:60px;height:30px;">
+     <div style="text-align:center; font-size:25px;">
+    <div style="text-align:center;font-size:25px;">총 학급수:
+    <select name="class_number" style="width:60px;height:30px;font-size:23px;">
         <option value="1" selected>1개</option>
         <option value="2">2개</option>
         <option value="3">3개</option>
@@ -32,8 +78,6 @@
         <option value="8">8개</option>
     </select>
     </div>
- </h3>
-<ul>
     <li><div style="text-align:center">
         <label> 국어1:</label>
         <select name="korean1_class" style="width:60px;height:30px;">
@@ -45,8 +89,6 @@
             <option value="5">5시간</option>
         </select>
     </div> </li>
-     <br>
-
     <li><div style="text-align:center">
         <label> 국어2:</label>
         <select name="korean2_class" style="width:60px;height:30px;">
@@ -58,8 +100,6 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-     <br>
-
     <li><div style="text-align:center">
         <label> 수학1:</label>
         <select name="math1_class" style="width:60px;height:30px;">
@@ -71,9 +111,7 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-     <br>
-
-    <li><div style="text-align:center">
+         <li><div style="text-align:center">
         <label> 수학2:</label>
         <select name="math2_class" style="width:60px;height:30px;">
             <option value="0"selected>0시간</option>
@@ -84,9 +122,7 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-     <br>
-
-    <li><div style="text-align:center">
+   <li><div style="text-align:center">
         <label> 영어 :</label>
         <select name="english_class" style="width:60px;height:30px;">
             <option value="0" selected>0시간</option>
@@ -97,9 +133,7 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-     <br>
-
-    <li><div style="text-align:center">
+   <li><div style="text-align:center">
         <label> 사회 :</label>
         <select name="social_class" style="width:60px;height:30px;">
             <option value="0" selected>0시간</option>
@@ -110,9 +144,7 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-     <br>
-
-    <li><div style="text-align:center">
+     <li><div style="text-align:center">
         <label> 과학 :</label>
         <select name="science_class" style="width:60px;height:30px;">
             <option value="0" selected>0시간</option>
@@ -123,9 +155,7 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-     <br>
-
-    <li><div style="text-align:center">
+         <li><div style="text-align:center">
         <label> 체육 :</label>
         <select name="physical_class" style="width:60px;height:30px;">
             <option value="0" selected>0시간</option>
@@ -136,11 +166,10 @@
         <option value="5">5시간</option>
     </select>
     </div></li>
-    </ul>
-
-<br>
-<div style="text-align:right"><button type="submit">시간표 생성</button></div>
+     </div>
+<div class="last" style="text-align:center"><button type="submit">시간표 생성</button></div>
  </form>
+
 
 </body>
 </html>
