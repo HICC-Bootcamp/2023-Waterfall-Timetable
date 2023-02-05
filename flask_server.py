@@ -8,6 +8,7 @@ import os
 app = Flask(__name__)
 
 num_of_class = 0
+ind_num=0
 
 
 def checking_existence_of_timetable():
@@ -43,20 +44,15 @@ def teacher_2():
             df[f'{class_ + 1}반'] = df[f'{class_ + 1}반'].drop(df[f'{class_ + 1}반'].columns[0], axis=1)
             class_table.append(df[f'{class_+1}반'].values.tolist())
 
-        korean1_table = [[" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "],
-                       [" ", " ", " ", " ", " "]]
+        korean1_table = list()
+        for i in range(0, ind_num) :
+            korean1_table.append([" ", " ", " ", " ", " "])
 
-        for i in range(0,num_of_class):
-            for j in range(0, 8):
+        for i in range(0, num_of_class):
+            for j in range(ind_num):
                 for k in range(0, 5):
                     if class_table[i][j][k] == subject_select:
-                        korean1_table[j][k] = f'{i+1}반'
+                        korean1_table[j][k] = f'{i + 1}반'
 
         print(korean1_table)
 
@@ -141,7 +137,8 @@ def manager_result():
         total_times = korean1+korean2+math1+math2+english+social+science+physical  #총합시간
 
         if total_times % 5 == 0:
-            ind_num = total_times // 5
+            global ind_num
+            ind_num=total_times // 5
             col = ["월", "화", "수", "목", "금"]
             ind = []
             for i in range(1, ind_num + 1):
